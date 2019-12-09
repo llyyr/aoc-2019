@@ -12,4 +12,4 @@ print(l.count(1) * l.count(2))
 img = [[x for x in p if x != 2][0] for p in zip(*layers)]
 pixels = [img[i*w:(i+1)*w] for i in range(h)]
 for row in pixels:
-        print(''.join(' #' [i] for i in row))
+    print(''.join(' #' [i] for i in row))
