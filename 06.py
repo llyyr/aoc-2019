@@ -1,4 +1,4 @@
-tree = {y: x for x, y in [x.strip().split(')') for x in open('6.in')]}
+tree = {y: x for x, y in [x.strip().split(')') for x in open('06.in')]}
 
 
 def calc(x):

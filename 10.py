@@ -34,7 +34,7 @@ targets = []
 for (dx, dy) in seen:
     key = math.degrees(math.atan2(dx, dy))
     key -= 360 if key > 90 else 0
-    targets.append((key, seen))
+    targets.append((key, (dx, dy)))
 
 targets = sorted(targets, reverse=True)
 target = targets[199][1]

@@ -73,7 +73,7 @@ class IntCode:
         return self.out
 
 
-with open('9.in', 'r') as f:
+with open('09.in', 'r') as f:
     puzzle = list(map(int, f.readline().strip().split(',')))
     print("Part 1: ", IntCode(puzzle, [1]).run())
     print("Part 2: ", IntCode(puzzle, [2]).run())

@@ -1,7 +1,7 @@
 from collections import defaultdict
 
 
-with open('3.in', 'r') as data:
+with open('03.in', 'r') as data:
     data = data.read().splitlines()
     dirs = {'U': (0, 1), 'D': (0, -1), 'L': (-1, 0), 'R': (1, 0)}
     grid = defaultdict(dict)

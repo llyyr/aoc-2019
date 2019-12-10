@@ -1,4 +1,4 @@
-with open("2.in", "r") as f:
+with open("02.in", "r") as f:
     b = [int(x) for x in f.read().split(",")]
 
 

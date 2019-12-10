@@ -1,4 +1,4 @@
-with open("5.in", "r") as f:
+with open("05.in", "r") as f:
     b = list(map(int, f.read().split(',')))
 
 def wtffff(a, iPos, num, jump=False):

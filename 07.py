@@ -1,7 +1,7 @@
 from itertools import permutations
 
 
-with open("7.in", "r") as f:
+with open("07.in", "r") as f:
     a = list(map(int, f.read().split(',')))
 
 

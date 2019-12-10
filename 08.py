@@ -1,4 +1,4 @@
-f = list(map(int, open('8.in').read().strip()))
+f = list(map(int, open('08.in').read().strip()))
 w, h = 25, 6
 wh = w*h
 

@@ -5,7 +5,7 @@ def calculateFuel2(i):
     add = calculateFuel(i)
     return (add + calculateFuel2(add)) if add >= 0 else 0
 
-with open("1.in", "r") as f:
+with open("01.in", "r") as f:
     totalFuelMass = 0
     totalFuelMass2 = 0
     for mass in f:
