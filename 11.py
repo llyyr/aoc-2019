@@ -1,6 +1,6 @@
 from collections import defaultdict
 
-class IntCode:
+class IntCode(object):
     arity = {
         1: (0, 0, 1),
         2: (0, 0, 1),
