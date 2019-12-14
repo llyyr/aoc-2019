@@ -19,7 +19,6 @@ def get_cost(nfuel):
     while any(cost[key] > 0 and key != "ORE" for key in cost):
         x = list(map(str, (k for k in cost if cost[k] > 0 and k != 'ORE')))
         x = x[0]
-        xq = cost[x]
         outq = recipes[x][1][0]
         qq = -(cost[x] // -outq)
         cost[x] -= outq*qq
