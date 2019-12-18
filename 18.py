@@ -22,7 +22,7 @@ class Matrix(object):
 directions = [Matrix(0, -1), Matrix(1, 0), Matrix(0, 1), Matrix(-1, 0)]
 keys = set()
 doors = set()
-map = []
+mp = []
 key_loc = [0]*27
 door_loc = [0]*26
 
@@ -30,7 +30,7 @@ door_loc = [0]*26
 y=0
 for line in f:
     x=0
-    map.append(line)
+    mp.append(line)
     for c in line:
         if c >= 'a' and c <='z':
             key_loc[ord(c)-ord('a')] = Matrix(x,y)
@@ -45,14 +45,14 @@ for line in f:
 
 dist={}
 
-xsize=len(map[0])
-ysize=len(map)
+xsize=len(mp[0])
+ysize=len(mp)
 
 SEEN = set()
 
 req_keys = {}
 def dfs(cur, doors):
-    global map
+    global mp
     global SEEN
     if cur in SEEN:
         return
@@ -60,7 +60,7 @@ def dfs(cur, doors):
 
     for d in directions:
         p = cur+d
-        c = map[p.y][p.x]
+        c = mp[p.y][p.x]
         if c != '#':
             new_doors=set(doors)
             if c >= 'a' and c <= 'z':
@@ -86,13 +86,13 @@ graph = {}
 for y in range(ysize):
     for x in range(xsize):
         p = Matrix(x, y)
-        c = map[y][x]
+        c = mp[y][x]
         if c != '#':
             nearby = []
             for d in directions:
                 new_pos = p + d
                 if new_pos.x >= 0 and new_pos.x < xsize and new_pos.y >= 0 and new_pos.y < ysize:
-                    new_cur = map[new_pos.y][new_pos.x]
+                    new_cur = mp[new_pos.y][new_pos.x]
                     if new_cur != '#':
                         nearby.append(new_pos)
             graph[p] = nearby
