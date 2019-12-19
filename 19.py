@@ -111,14 +111,12 @@ for y in range(50):
 print(total)
 
 
-y=99
-x=0
+y = 99
+x = 0
 while True:
     while check(x, y) == 0:
-        x+= 1
-    x2 = x+99
-    y2 = y-99
-    if check(x2, y2) == 1:
-        print(x*10000+y2)
+        x += 1
+    if check(x + 99, y - 99) == 1:
+        print(x*10000 + y-99)
         break
-    y+=1
+    y += 1
