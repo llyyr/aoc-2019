@@ -17,23 +17,6 @@ class Matrix(object):
 
 
 directions = [Matrix(0, -1), Matrix(1, 0), Matrix(0, 1), Matrix(-1, 0)]
-
-
-def bfs(graph, start):
-    dist = {}
-    q = Q()
-    q.put(start)
-    dist[start] = 0
-    while not q.empty():
-        cur = q.get()
-        steps = dist[cur]
-        for nearby in graph.get(cur, []):
-            if nearby not in dist:
-                dist[nearby] = steps + 1
-                q.put(nearby)
-    return dist
-
-
 lines = open('20.in').read().split('\n')
 ysize = len(lines) - 4
 xsize = len(lines[2]) - 2
@@ -41,22 +24,20 @@ xsize = len(lines[2]) - 2
 g, portals, diff = {}, {}, {}
 for y in range(ysize):
     for x in range(xsize):
-        p = Matrix(x,y)
-        if lines[y+2][x+2] != '.':
+        if lines[y + 2][x + 2] != '.':
             continue
+        p = Matrix(x, y)
         nearby = []
         for d in directions:
-            new_pos = p+d
+            new_pos = p + d
             if new_pos.x + 2 < len(lines[new_pos.y + 2]):
                 c = lines[new_pos.y + 2][new_pos.x + 2]
                 if c >= 'A' and c <= 'Z':
-                    new_pos = new_pos + d
+                    new_pos = p + d + d
                     cc = lines[new_pos.y + 2][new_pos.x + 2]
                     if d.x < 0 or d.y < 0:
-                        tmp = c
-                        c = cc
-                        cc = tmp
-                    new_pos = new_pos + d
+                        c, cc = cc, c
+                    new_pos = p + d + d + d
                     inner = 0 if new_pos.x < 0 or new_pos.y < 0 or new_pos.x >= xsize or new_pos.y >= ysize else 1
                     i = c + cc
                     if i == 'AA':
@@ -79,7 +60,19 @@ for _, pos in portals.items():
     g[pos[1]].append(pos[0])
 
 
-print(bfs(g, start)[goal])
+dist = {}
+q = Q()
+q.put(start)
+dist[start] = 0
+while not q.empty():
+    cur = q.get()
+    steps = dist[cur]
+    for nearby in g.get(cur, []):
+        if nearby not in dist:
+            dist[nearby] = steps + 1
+            q.put(nearby)
+print(dist[goal])
+
 
 dist = {}
 q = Q()
