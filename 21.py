@@ -93,20 +93,19 @@ class IntCode(object):
                 self.ip += len(self.arity[op]) + 1
         return True
 
-   
+
 puzzle = list(map(int, open('21.in').readline().strip().split(",")))
 
+def common(cmd, p=puzzle):
+    vm = IntCode(p)
+    vm.addInput(list(ord(x) for x in chr(10).join(cmd) + chr(10)))
+    vm.runToBlock()
+    out = list(str(chr(x)) if x < 256 else str(x) for x in vm.out)
+    return ''.join(out)
+
 cmds = ["NOT A J", "NOT B T", "OR T J", "NOT C T", "OR T J", "NOT D T", "NOT T T", "AND T J", "WALK"]
-vm = IntCode(puzzle)
-vm.addInput(list(ord(x) for x in "\n".join(cmds) + "\n"))
-vm.runToBlock()
-out = list(map(str, (chr(x) if x < 127 else x for x in vm.out)))
-print(''.join(out))
+print(common(cmds))
 
 cmds = ["NOT A J", "NOT B T", "OR T J", "NOT C T", "OR T J", "NOT D T", "NOT T T", "AND T J", "NOT I T", "NOT T T", "OR F T", "AND E T", "OR H T", "AND T J", "RUN"]
-vm = IntCode(puzzle)
-vm.addInput(list(ord(x) for x in "\n".join(cmds) + "\n"))
-vm.runToBlock()
-out = list(map(str, (chr(x) if x < 127 else x for x in vm.out)))
-print(''.join(out))
+print(common(cmds))
 
