@@ -1,4 +1,4 @@
-#https://en.wikibooks.org/wiki/Algorithm_Implementation/Mathematics/Extended_Euclidean_algorithm#Modular_inverse
+# https://en.wikibooks.org/wiki/Algorithm_Implementation/Mathematics/Extended_Euclidean_algorithm#Modular_inverse
 
 def egcd(a, b):
     """return (g, x, y) such that a*x + b*y = g = gcd(a, b)"""
@@ -76,6 +76,6 @@ def part1(data):
         if d.get(i) == 2019:
             return i
 
-puzzle = list(map(str, (x for x in open('22.in').readlines())))
+puzzle = list(open('22.in').readlines())
 part1, part2 = part1(puzzle), part2(puzzle)
 print(part1, part2)
